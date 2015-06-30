@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+    <html lang="en=US">
+        <head>
+            <meta charset="utf-8"/>
+            <title>Get Denom</title>
+
+
+        <script>
+            function getDenom () {
+                var dnm = {};
+                var n = document.getElementById('num').value;
+                var result = document.getElementById('result');
+                
+                if (n >= 1000) {
+                    dnm.thousand = Math.floor(n/1000);
+                    n = n - (1000*dnm.thousand);
+                };
+                if (n >= 500) {
+                    dnm.fiveH = Math.floor(n/500);
+                    n = n - (500 * dnm.fiveH);
+                };
+                if (n >= 100) {
+                    dnm.oneH = Math.floor(n/100);
+                    n = n - (100*dnm.oneH);
+                };
+                if (n >= 50) {
+                    dnm.fifty = Math.floor(n/50);
+                    n = n - (50*dnm.fifty);
+                };
+                if (n >= 20) {
+                    dnm.twenty = Math.floor(n/20);
+                    n = n - (20*dnm.twenty);
+                };
+                if (n >= 10) {
+                    dnm.ten = Math.floor(n/10);
+                    n = n - (10*dnm.ten);
+                };
+                if (n < 10) {
+                    dnm.piso = n;
+                };
+
+                result.innerHTML = dnm.toSource();
+            }
+
+            
+        </script>
+        </head>
+        <body>
+            <input type="text" id="num">
+            <button type="button" onclick="getDenom()">Get Denominations</button>
+            <pre id="result"></pre>
+        </body>
+    </html> 
